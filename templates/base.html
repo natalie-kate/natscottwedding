@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Metadata and external links -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="wedding website">
+    <meta name="author" content="Natalie Kate Alexander">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>XanFran Wedding</title>
+</head>
+
+<body class="container-fluid">
+    <!-- Header and Nav, modified bootstrap nav -->
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <a class="navbar-brand" href="{{ url_for('home') }}" aria-label="Logo and link to home">
+                N & S </a>
+            <!-- Dropdown menu button for smaller screens -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navdropdownmenu"
+                aria-controls="navdropdownmenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fas fa-bars"></i></span>
+            </button>
+            <!-- Nav links -->
+            <div class="collapse navbar-collapse" id="navdropdownmenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}" aria-label="link to home page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('story') }}" aria-label="link to our story page">Our Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('day') }}" aria-label="link to our day page">Our Day</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('diary') }}" aria-label="link to wedding diary page">Wedding Diary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('gallery') }}" aria-label="link to gallery page">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('rsvp') }}" aria-label="link to rsvp page">RSVP</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Individual page header on an image background gets inserted here -->
+    {% block image %}
+
+    {% endblock %}
+
+    <!-- Section for flash messages to be displayed -->
+    <div class="row">
+        <div class="col-12">
+            <!-- Get messages using function from flash imported from flask -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="flashes text-center">
+                <h4 class="warning">
+                    <i class="fas fa-bell" aria-hidden="true"></i>
+                    {{ message }}
+                    <i class="fas fa-bell" aria-hidden="true"></i>
+                </h4>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+
+    <!-- Individual page content will be inserted here -->
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- Footer with links -->
+    <footer>
+        <div class="row text-center">
+            <div class="col-12">
+                <h3 class="footer"> Contact Us </h3>
+                <p>You can RSVP <a href="{{ url_for('rsvp') }}" aria-label="link to contact us page">Here</a></p>
+            </div>
+        </div>
+        <div class="row footer-contacts">
+            <!-- Nav Links -->
+            <div class="col-6 text-center">
+                <p>Natalie</p>
+                <p>Phone: 07984326409</p>
+                <p>Email: nataliekatealexander@gmail.com</p>
+            </div>
+            <div class="col-6 text-center">
+                <p>Scott</p>
+                <p>Phone: 07837368662</p>
+                <p>Email: scottfrancis2789@gmail.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script defer src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <!-- Any individual page scripts to be inserted here -->
+    {% block script %}
+
+    {% endblock %}
+</body>
+
+</html>

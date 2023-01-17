@@ -1,0 +1,38 @@
+/*---- Fonts ----*/
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:wght@400;700&family=Tangerine:wght@400;700&display=swap');
+
+
+/*---- General ----*/
+body{
+    font-family: 'Gentium Book Basic', serif;
+}
+.container-fluid{
+    background-color: #FAF7EB;
+}
+.title-container {
+    height: 25vh;
+    background: url("../images/app-images/books-med.jpg") no-repeat top center;
+    background-size: cover;
+    padding: 0;
+    border-radius: 10px;
+}
+.image-container {
+    min-height: 80vh;
+    width:80%;
+    background: url("../images/IMG_2889.JPG") no-repeat center center;
+    background-size: cover;
+    margin-left: 10%;
+    padding: 0;
+    border-radius: 10px;
+    background-size: cover;
+}
+
+/*---- Headings ----*/
+.image-container h1,
+.header h1 {
+    color: #FAF7EB;
+    padding-top: 20vh;
+    font-family: 'Tangerine', cursive;
+    font-size: 60px;
+    font-weight: 700;
+}
