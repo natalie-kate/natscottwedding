@@ -36,7 +36,7 @@ def day():
 
 @app.route("/diary")
 def diary():
-    return render_template('wedding_diaries.html')
+    return render_template('wedding_diary.html')
 
 
 @app.route("/gallery")
