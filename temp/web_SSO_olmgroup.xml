@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<web-app xmlns:xsi="http://www.wc3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>redirect.html</welcome-file>
+	</welcome-file-list>
+
+	<!-- OLM Azure AD settings Nalytics Azure AD Login -->
+	<filter>
+
+		<filter-name>AuthFilter</filter-name>
+
+		<filter-class>com.nalanda.msal.AuthFilter</filter-class>
+
+		<async-supported>true</async-supported>
+
+		<init-param>
+			<param-name>authority</param-name>
+			<param-value>https://login.microsoftonline.com/olmgroup.onmicrosoft.com/</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>tenant</param-name>
+			<param-value>olmgroup.onmicrosoft.com</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>client_id</param-name>
+			<param-value>51f29376-c9c8-4321-8df5-c9e4285db5f4</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>secret_key</param-name>
+			<param-value>4Vmb38GyuXSwKFLJI2IuzDjzeL5GP/e6zUQ2M/jNHb0=</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>redirectUriSignIn</param-name>
+			<param-value>http://localhost:8080/Nalytics/</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>redirectUriGraph</param-name>
+			<param-value />
+		</init-param>
+
+		<init-param>
+			<param-name>msGraphEndpointHost</param-name>
+			<param-value>https://graph.microsoft.com/</param-value>
+		</init-param>
+
+	        <init-param>
+        	    	<param-name>supportIPWhitelist</param-name>
+            		<param-value>0:0:0:0:0:0:0:1,127.0.0.1,81.111.114.31,109.154.24.194</param-value>
+        	</init-param>
+
+	</filter>
+
+
+	<!-- Nalytics MT Any ID Multi Tenanted Any Microsoft ID <filter> <filter-name>AuthFilter</filter-name> 
+		<filter-class>com.nalanda.nalyticsweb.filters.msal.AuthFilter</filter-class> 
+		<async-supported>true</async-supported> <init-param> <param-name>authority</param-name> 
+		<param-value>https://login.microsoftonline.com/common/</param-value> </init-param> 
+		<init-param> <param-name>tenant</param-name> <param-value>olmgroup.onmicrosoft.com</param-value> 
+		</init-param> <init-param> <param-name>client_id</param-name> <param-value>af007024-162f-4433-9d91-c50cdb80f990</param-value> 
+		</init-param> <init-param> <param-name>secret_key</param-name> <param-value>8?.P18lo3?=kB?1/][Tak5Ag96JgKXPA</param-value> 
+		</init-param> <init-param> <param-name>redirectUriSignIn</param-name> <param-value>http://localhost:8080/Nalytics/</param-value> 
+		</init-param> <init-param> <param-name>redirectUriGraph</param-name> <param-value></param-value> 
+		</init-param> <init-param> <param-name>msGraphEndpointHost</param-name> <param-value>https://graph.microsoft.com/</param-value> 
+		</init-param> </filter> -->
+
+	<filter-mapping>
+		<filter-name>AuthFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+
+	<filter>
+		<filter-name>ForceDownloadFilterParameter</filter-name>
+		<filter-class>
+			com.nalanda.nalyticsweb.filters.ForceDownloadFilterParameter
+		</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilterParameter</filter-name>
+		<url-pattern>*.foo</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<filter-class>com.nalanda.nalyticsweb.filters.ForceDownloadFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.xfd</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.XFD</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.doc</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.DOC</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.docx</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.DOCX</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.eml</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.EML</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.xls</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.XLS</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.xlsx</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>ForceDownloadFilter</filter-name>
+		<url-pattern>*.XLSX</url-pattern>
+	</filter-mapping>
+
+    <!-- <security-constraint> <web-resource-collection> <web-resource-name>Nalytics 
+        web app</web-resource-name> <url-pattern>/*</url-pattern> </web-resource-collection> 
+        <auth-constraint> <role-name>*</role-name> </auth-constraint> </security-constraint> 
+        <security-constraint> <web-resource-collection> <web-resource-name>Exclude 
+        from Security</web-resource-name> <url-pattern>/images/*</url-pattern> <url-pattern>/css/*</url-pattern> 
+        <url-pattern>/js/NalyticsVersion.js</url-pattern> </web-resource-collection> 
+        </security-constraint> <login-config> <auth-method>FORM</auth-method> <realm-name>nalytics-web-ldap-realm</realm-name> 
+        <form-login-config> <form-login-page>/jsp/login.jsp</form-login-page> <form-error-page>/jsp/loginerror.jsp</form-error-page> 
+        </form-login-config> </login-config> -->
+
+    <listener>
+        <listener-class>com.nalanda.nalyticsweb.session.NalyticsSessionListener</listener-class>
+    </listener>
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+		<cookie-config>
+			<http-only>true</http-only>
+			<secure>true</secure>
+		</cookie-config>
+	</session-config>
+
+</web-app>
